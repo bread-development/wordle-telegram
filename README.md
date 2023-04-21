@@ -1,1 +1,1 @@
-# Wordly
+# Wordle
