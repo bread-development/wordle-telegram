@@ -2,7 +2,7 @@ import json
 
 normal_words = []
 
-words = open('russian.txt', encoding='windows-1251').read().split()
+words = open('russian.txt', encoding='UTF-8').read().split()
 for i in words[12:]:
     if len(i) == 5:
         normal_words.append(str(i).lower())
