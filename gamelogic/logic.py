@@ -9,8 +9,8 @@ def getword():
 
 def checkword(input_word, attempts, is_win, target):
     with open("dict/dict.json", "r") as read_file:
-        words = json.load(read_file)
-    if len(input_word) == 5 and input_word in words:
+        game_dict = json.load(read_file)
+    if len(input_word) == 5 and input_word in game_dict:
         location = []
         for i in range(len(input_word)):
             letter = input_word[i]
@@ -22,15 +22,15 @@ def checkword(input_word, attempts, is_win, target):
                 location.append(0)
         attempts += 1
         if sum(location) == 10:
-            return 'Победа', attempts, True
+            return '\nПобеда', attempts, True
         if attempts == 6:
-            return 'Поражение', attempts, False
+            return '\nПоражение', attempts, False
         tries_left = '\nПопыток осталось: ' + str(6 - attempts) + '\n '
         return str(location)+tries_left, attempts, is_win
     elif len(input_word) != 5:
         return 'Введите слово из пяти букв\n', attempts, is_win
 
-    elif input_word not in words:
+    elif input_word not in game_dict:
         return 'Такого слова не существует\n', attempts, is_win
 
     
