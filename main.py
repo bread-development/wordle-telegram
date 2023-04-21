@@ -5,8 +5,7 @@ from random import choice
 with open("data_file.json", "r") as write_file:
     words = json.load(write_file)
 
-# word = choice(words)
-word = 'соска'
+word = choice(words)
 print(word)
 
 end = False
@@ -35,9 +34,18 @@ while not end:
         if sum(location) == 10:
             end = True
 
+        attempts += 1
+
+        if attempts == 6:
+            break
+
     elif len(input_word) != 5:
         print('Введите слово из пяти букв!')
 
     elif input_word not in words:
         print('Такого слова не существует')
-print('Победа!')
+
+if end:
+    print('Победа!')
+else:
+    print('Вы проиграли')
