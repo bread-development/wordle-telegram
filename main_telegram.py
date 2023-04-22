@@ -2,10 +2,10 @@ from telebot import types
 import telebot
 from gamelogic import logic as gmlck
 
-# в settings/token.txt храним токен и id админа через enter
+# в settings/token.txt храним токен в settings/admin.txt - id админа (админов)
 token = open('settings/token.txt').readline().split()[0]
 bot = telebot.TeleBot(token)  # инит
-admins = open('settings/token.txt').read().split() # админ
+admins = open('settings/admin.txt').read().split() # админы
 
 
 @bot.message_handler(commands=['start', 'help'])  # старт
