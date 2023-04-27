@@ -1,3 +1,5 @@
 .idea/
 gamelogic/__pycache__
 settings/
+data/__pycache__
+work_with_db/__pycache__
