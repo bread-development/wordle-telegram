@@ -14,3 +14,8 @@ def change_attempts(id_, attempts):
     user = db_sess.query(User).filter(User.id == id_).first()
     user.attempts = attempts
     db_sess.commit()
+
+
+def change_status(id_, in_game):
+    # устанавливаем, идет игра или нет
+    pass
