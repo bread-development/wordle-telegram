@@ -3,8 +3,11 @@ from data.users import User
 
 
 def req_user(id_):
-    #чекаем, есть ли юзер в базе
-    pass
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.id == id_).first()
+    if user:
+        return True
+    return False
 
 
 def req_word(id_):
@@ -18,6 +21,8 @@ def req_attempts(id_):
     user = db_sess.query(User).filter(User.id == id_).first()
     return user.attempts
 
+
 def req_status(id_):
-    # здесь чекаем, есть незаконченная игра или нет, если есть, то return True, иначе False
-    pass
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.id == id_).first()
+    return user.status

@@ -9,3 +9,4 @@ class User(SqlAlchemyBase):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     word = sqlalchemy.Column(sqlalchemy.String)
     attempts = sqlalchemy.Column(sqlalchemy.Integer)
+    status = sqlalchemy.Column(sqlalchemy.Boolean)
