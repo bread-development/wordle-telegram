@@ -1,6 +1,9 @@
 from telebot import types
 import telebot
 from gamelogic import logic as gmlck
+from work_with_db import changes as db_chng
+from work_with_db import creates as db_crt
+from work_with_db import requests as db_req
 
 # в settings/token.txt храним токен в settings/admin.txt - id админа (админов)
 token = open('settings/token.txt').readline().split()[0]
@@ -25,15 +28,17 @@ def find(message):
     word = gmlck.getword()
     if usr_id in admins:
         bot.reply_to(message, str(word))
-    print(usr_id, admins)
     # bot.register_next_step_handler(message, result_back)
     # 
 
 
 # если сообщение не распознано
 @bot.message_handler(func=lambda message: True)
-def echo_all(message):
-    bot.reply_to(message, "Я тебя не понял, попробуй что-нибудь другое")
+def answer(message):
+    usr_id = str(message.from_user.id)
+    # проверка, есть ли юзер в базе
+    user = db_req.req_user(usr_id)
+    print(user)
 
 
 if __name__ == '__main__':
